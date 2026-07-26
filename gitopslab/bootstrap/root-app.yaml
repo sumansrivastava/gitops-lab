@@ -11,7 +11,7 @@ spec:
   source:
     repoURL: https://github.com/sumansrivastava/gitops-lab.git
     targetRevision: HEAD
-    path: platform
+    path: gitopslab/platform
 
   destination:
     server: https://kubernetes.default.svc
