@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: functions
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/sumansrivastava/gitops-lab.git
+    targetRevision: main
+    path: platform/functions
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
