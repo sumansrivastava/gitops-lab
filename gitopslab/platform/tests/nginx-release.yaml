@@ -1,0 +1,17 @@
+apiVersion: helm.crossplane.io/v1beta1
+kind: Release
+metadata:
+  name: nginx
+spec:
+  providerConfigRef:
+    name: default
+
+  forProvider:
+    namespace: nginx
+
+    chart:
+      name: nginx
+      repository: https://charts.bitnami.com/bitnami
+      version: "22.*"
+
+  rollbackLimit: 3

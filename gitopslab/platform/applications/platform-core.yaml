@@ -10,7 +10,7 @@ spec:
 
   source:
     repoURL: https://github.com/sumansrivastava/gitops-lab.git
-    targetRevision: main
+    targetRevision: HEAD
     path: gitopslab/platform/core
 
   destination:
@@ -21,6 +21,3 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
