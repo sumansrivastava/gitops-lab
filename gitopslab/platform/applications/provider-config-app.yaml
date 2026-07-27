@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/sumansrivastava/gitops-lab.git
     targetRevision: main
-    path: gitopslab/platform/provider-configs
+    path: gitopslab/platform/core/provider-configs
   
 
   destination:
