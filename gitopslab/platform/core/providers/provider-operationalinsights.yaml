@@ -5,4 +5,4 @@ metadata:
   name: provider-azure-operationalinsights
 
 spec:
-  package: xpkg.upbound.io/upbound/provider-azure-operationalinsights:v1.23.0
+  package: xpkg.upbound.io/upbound/provider-azure-operationalinsights:v2.6.2
