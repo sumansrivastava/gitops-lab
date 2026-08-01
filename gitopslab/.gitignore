@@ -1,0 +1,8 @@
+.env
+*.pem
+*.key
+*.pfx
+azure.json
+kubeconfig
+.terraform/
+terraform.tfstate*

@@ -8,3 +8,5 @@ resources:
   - xrd
   - compositions
   - claims
+  - rbac
+  - runtime-configs
