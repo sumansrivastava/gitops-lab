@@ -3,6 +3,7 @@ kind: Composition
 metadata:
   name: namespace-configmap-composition
 spec:
+  mode: Resources
   compositeTypeRef:
     apiVersion: platform.crossplane.io/v1alpha1
     kind: XNamespaceConfigMap

@@ -1,23 +1,23 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
 
-metadata:
-  name: platform-core
-  namespace: argocd
+# metadata:
+#   name: platform-core
+#   namespace: argocd
 
-spec:
-  project: default
+# spec:
+#   project: default
 
-  source:
-    repoURL: https://github.com/sumansrivastava/gitops-lab.git
-    targetRevision: main
-    path: gitopslab/platform/core
+#   source:
+#     repoURL: https://github.com/sumansrivastava/gitops-lab.git
+#     targetRevision: main
+#     path: gitopslab/platform/core
 
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: crossplane-system
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: crossplane-system
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
