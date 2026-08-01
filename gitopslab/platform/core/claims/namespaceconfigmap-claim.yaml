@@ -1,0 +1,9 @@
+apiVersion: platform.crossplane.io/v1alpha1
+kind: NamespaceConfigMap
+metadata:
+  name: first-namespace-configmap
+spec:
+  namespace: demo-namespace
+  configMapName: demo-config
+  configMapData:
+    message: hello-from-crossplane
