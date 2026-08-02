@@ -1,0 +1,43 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: provider-kubernetes-extra
+
+rules:
+# Cluster-scoped resources
+- apiGroups: [""]
+  resources:
+    - namespaces
+  verbs:
+    - get
+    - list
+    - watch
+    - create
+    - update
+    - patch
+    - delete
+
+# Namespaced resources you'll commonly manage
+- apiGroups: [""]
+  resources:
+    - configmaps
+    - secrets
+    - services
+    - serviceaccounts
+    - persistentvolumeclaims
+  verbs:
+    - "*"
+
+- apiGroups: ["apps"]
+  resources:
+    - deployments
+    - statefulsets
+    - daemonsets
+  verbs:
+    - "*"
+
+- apiGroups: ["networking.k8s.io"]
+  resources:
+    - ingresses
+  verbs:
+    - "*"
