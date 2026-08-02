@@ -1,11 +1,20 @@
 apiVersion: platform.crossplane.io/v1alpha1
 kind: NamespaceConfigMap
+
 metadata:
   name: demo-platform-v1
+  namespace: argocd
+
 spec:
+
   namespace: platform-demo
+
   configMapName: platform-demo-config
+
   configMapData:
-    owner: "crossplane"
-    environment: "lab"
+
     message: "Hello from my first Crossplane Composition"
+
+    owner: "crossplane"
+
+    environment: "lab"

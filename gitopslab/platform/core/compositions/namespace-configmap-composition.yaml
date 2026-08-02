@@ -4,6 +4,7 @@ metadata:
   name: namespace-configmap-composition
 
 spec:
+
   compositeTypeRef:
     apiVersion: platform.crossplane.io/v1alpha1
     kind: XNamespaceConfigMap
@@ -23,9 +24,9 @@ spec:
 
       resources:
 
-      ########################################################
+      ###################################################
       # Namespace
-      ########################################################
+      ###################################################
 
       - name: namespace-object
 
@@ -34,15 +35,27 @@ spec:
           kind: Object
 
           spec:
+
             providerConfigRef:
               name: default
 
+            watch: true
+
             forProvider:
+
               manifest:
+
                 apiVersion: v1
                 kind: Namespace
+
                 metadata:
                   name: placeholder
+
+        readinessChecks:
+        - type: MatchCondition
+          matchCondition:
+            type: Ready
+            status: "True"
 
         patches:
 
@@ -50,9 +63,9 @@ spec:
           fromFieldPath: spec.namespace
           toFieldPath: spec.forProvider.manifest.metadata.name
 
-      ########################################################
+      ###################################################
       # ConfigMap
-      ########################################################
+      ###################################################
 
       - name: configmap-object
 
@@ -61,11 +74,16 @@ spec:
           kind: Object
 
           spec:
+
             providerConfigRef:
               name: default
 
+            watch: true
+
             forProvider:
+
               manifest:
+
                 apiVersion: v1
                 kind: ConfigMap
 
@@ -74,6 +92,12 @@ spec:
                   namespace: placeholder
 
                 data: {}
+
+        readinessChecks:
+        - type: MatchCondition
+          matchCondition:
+            type: Ready
+            status: "True"
 
         patches:
 

@@ -17,102 +17,36 @@ spec:
   defaultCompositionRef:
     name: namespace-configmap-composition
 
-  defaultCompositeDeletePolicy: Background
+  defaultCompositionUpdatePolicy: Automatic
 
   versions:
-    - name: v1alpha1
+  - name: v1alpha1
+    served: true
+    referenceable: true
 
-      served: true
-      referenceable: true
+    schema:
+      openAPIV3Schema:
 
-      additionalPrinterColumns:
-        - name: Namespace
-          type: string
-          jsonPath: .spec.namespace
+        type: object
 
-        - name: ConfigMap
-          type: string
-          jsonPath: .spec.configMapName
+        properties:
 
-        - name: Synced
-          type: string
-          jsonPath: .status.conditions[?(@.type=="Synced")].status
+          spec:
+            type: object
 
-        - name: Ready
-          type: string
-          jsonPath: .status.conditions[?(@.type=="Ready")].status
+            properties:
 
-      schema:
-        openAPIV3Schema:
+              namespace:
+                type: string
 
-          type: object
+              configMapName:
+                type: string
 
-          properties:
-
-            spec:
-
-              type: object
-
-              properties:
-
-                compositionRef:
-                  type: object
-                  x-kubernetes-preserve-unknown-fields: true
-
-                compositionSelector:
-                  type: object
-                  x-kubernetes-preserve-unknown-fields: true
-
-                writeConnectionSecretToRef:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    namespace:
-                      type: string
-
-                namespace:
-                  type: string
-                  minLength: 1
-
-                configMapName:
-                  type: string
-                  minLength: 1
-
-                labels:
-                  type: object
-                  additionalProperties:
-                    type: string
-
-                annotations:
-                  type: object
-                  additionalProperties:
-                    type: string
-
-                configMapData:
-                  type: object
-                  additionalProperties:
-                    type: string
-
-              required:
-                - namespace
-                - configMapName
-
-            status:
-
-              type: object
-
-              properties:
-
-                namespace:
+              configMapData:
+                type: object
+                additionalProperties:
                   type: string
 
-                configMapName:
-                  type: string
-
-                observedGeneration:
-                  type: integer
-
-                conditions:
-                  type: array
-                  x-kubernetes-preserve-unknown-fields: true
+            required:
+            - namespace
+            - configMapName
